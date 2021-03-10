@@ -138,11 +138,13 @@ function getColor(magnitude) {
   if (magnitude < 4) {
     return "#ee9c00";
 }
-
+}
 // 6. Use the function that determines the radius of the earthquake marker based on its magnitude.
 // This function determines the radius of the earthquake marker based on its magnitude.
 // Earthquakes with a magnitude of 0 were being plotted with the wrong radius.
 function getRadius(magnitude) {
+  if (magnitude === 0) {
+    return 1;}
   if (magnitude > 5) {
     return magnitude * 5;
   }
@@ -151,6 +153,7 @@ function getRadius(magnitude) {
   }
   if (magnitude < 4) {
     return 4;
+}
 }
 
 // 7. Creating a GeoJSON layer with the retrieved data that adds a circle to the map 
