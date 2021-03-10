@@ -142,23 +142,10 @@ legend.onAdd = function() {
 
   // 3. Use d3.json to make a call to get our Tectonic Plate geoJSON data.
   d3.json("https://raw.githubusercontent.com/fraxen/tectonicplates/master/GeoJSON/PB2002_boundaries.json").then(function(data) {
-    // This function returns the style data for each of the earthquakes we plot on
-  // the map. We pass the magnitude of the earthquake into two separate functions
-  // to calculate the color and radius.
-  function styleInfo(feature) {
-    return {
-      opacity: 1,
-      fillOpacity: 1,
-      fillColor: "#98ee00",
-      color: "#000000",
-      stroke: true,
-      weight: 0.5
-    };
-  }
 
   // Creating a GeoJSON layer with the retrieved data.
-  L.geoJson(data, {style: styleInfo(feature, latlng)}).addTo(tectonicPlates);
+  L.geoJson(data).addTo(tectonicPlates);
 
   // Then we add the earthquake layer to our map.
-  tectonicPlates.addTo(map);
+  tectonicPlates.addTo(map);})
 });
